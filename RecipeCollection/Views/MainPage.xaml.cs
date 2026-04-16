@@ -1,6 +1,6 @@
-﻿using recipe_collection.ViewModels;
+﻿using RecipeCollection.ViewModels;
 
-namespace recipe_collection.Views
+namespace RecipeCollection.Views
 {
     public partial class MainPage : ContentPage
     {

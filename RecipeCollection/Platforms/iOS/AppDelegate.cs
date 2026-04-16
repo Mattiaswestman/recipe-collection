@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace recipe_collection
+namespace RecipeCollection
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

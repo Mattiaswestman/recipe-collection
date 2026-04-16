@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace recipe_collection
+namespace RecipeCollection
 {
     public class Program
     {

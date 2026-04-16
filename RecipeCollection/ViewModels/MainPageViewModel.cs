@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace recipe_collection.ViewModels
+namespace RecipeCollection.ViewModels
 {
     public class MainPageViewModel : ObservableObject
     {

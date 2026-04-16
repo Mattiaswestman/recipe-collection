@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
-using recipe_collection.Views;
-using recipe_collection.ViewModels;
+using RecipeCollection.Views;
+using RecipeCollection.ViewModels;
 
-namespace recipe_collection
+namespace RecipeCollection
 {
     public static class MauiProgram
     {

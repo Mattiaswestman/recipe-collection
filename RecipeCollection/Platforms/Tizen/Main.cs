@@ -2,7 +2,7 @@ using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace recipe_collection
+namespace RecipeCollection
 {
     internal class Program : MauiApplication
     {

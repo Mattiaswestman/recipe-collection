@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using RecipeCollection.Views;
 
 namespace RecipeCollection.ViewModels
 {
@@ -6,6 +8,12 @@ namespace RecipeCollection.ViewModels
     {
         public RecipePageViewModel()
         {
+        }
+
+        [RelayCommand]
+        private async Task TapReturn()
+        {
+            await Shell.Current.GoToAsync("..");
         }
     }
 }

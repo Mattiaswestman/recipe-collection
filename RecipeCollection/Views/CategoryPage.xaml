@@ -8,7 +8,6 @@
 		  Padding="25">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
@@ -20,17 +19,25 @@
 			   FontAttributes="Bold"
 			   TextColor="{StaticResource Orange}" />
 
-		<Grid Grid.Row="1">
-			<Button BackgroundColor="{StaticResource Orange}"
+		<Grid Grid.Row="1"
+			  RowSpacing="15">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="0.5*" />
+				<RowDefinition Height="0.5*" />
+			</Grid.RowDefinitions>
+
+			<Button Grid.Row="0"
+					Command="{Binding TapRecipeCommand}"
+					BackgroundColor="{StaticResource Orange}"
 					Text="Recipe"
 					FontSize="18"
 					FontAttributes="Bold"
 					TextColor="{StaticResource EggWhite}">
 			</Button>
-		</Grid>
 
-		<Grid Grid.Row="2">
-			<Button BackgroundColor="{StaticResource Orange}"
+			<Button Grid.Row="1"
+					Command="{Binding TapReturnCommand}"
+					BackgroundColor="{StaticResource Orange}"
 					Text="Back"
 					FontSize="18"
 					FontAttributes="Bold"

@@ -8,7 +8,6 @@
 		  Padding="25">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto" />
-			<RowDefinition Height="Auto" />
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
@@ -21,7 +20,8 @@
 			   TextColor="{StaticResource Orange}" />
 
 		<Grid Grid.Row="1">
-			<Button BackgroundColor="{StaticResource Orange}"
+			<Button Command="{Binding TapReturnCommand}"
+					BackgroundColor="{StaticResource Orange}"
 					Text="Back"
 					FontSize="18"
 					FontAttributes="Bold"

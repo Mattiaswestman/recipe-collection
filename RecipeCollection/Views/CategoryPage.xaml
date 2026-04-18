@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RecipeCollection.Views.CategoryPage"
+			 Title="Category Page"
 			 xmlns:viewmodel="clr-namespace:RecipeCollection.ViewModels"
 			 x:DataType="viewmodel:CategoryPageViewModel">
 
@@ -12,14 +13,31 @@
 			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 
-		<Label Grid.Row="0"
-			   HorizontalOptions="Center"
-			   VerticalOptions="Center"
-			   Text="Category"
-			   FontSize="30"
-			   FontAttributes="Bold"
-			   TextColor="{StaticResource Orange}" />
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="0.25*" />
+				<ColumnDefinition Width="0.5*" />
+				<ColumnDefinition Width="0.25*" />
+			</Grid.ColumnDefinitions>
 
+			<Button Grid.Column="0"
+					Command="{Binding TapReturnCommand}"
+					BackgroundColor="{StaticResource Orange}"
+					Text="Back"
+					FontSize="18"
+					FontAttributes="Bold"
+					TextColor="{StaticResource EggWhite}">
+			</Button>
+
+			<Label Grid.Column="1"
+				   HorizontalOptions="Center"
+				   VerticalOptions="Center"
+				   Text="Category"
+				   FontSize="30"
+				   FontAttributes="Bold"
+				   TextColor="{StaticResource Orange}" />
+		</Grid>
+		
 		<CollectionView Grid.Row="1"
 						ItemsSource="{Binding Recipes}">
 			<CollectionView.ItemTemplate>

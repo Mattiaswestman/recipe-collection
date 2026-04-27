@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using RecipeCollection.Views;
 using RecipeCollection.ViewModels;
+using RecipeCollection.Services;
 
 namespace RecipeCollection
 {
@@ -23,12 +24,26 @@ namespace RecipeCollection
             builder.Services.AddTransient<CategoryPageViewModel>();
             builder.Services.AddTransient<RecipePage>();
             builder.Services.AddTransient<RecipePageViewModel>();
+            builder.Services.AddScoped(s =>
+            {
+                string databasePath = Path.Combine(FileSystem.AppDataDirectory, "Database.db");
+                System.Diagnostics.Debug.WriteLine($"Database path: {databasePath}");
+                return new RecipeCollectionDbContext(databasePath);
+            });
 
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<RecipeCollectionDbContext>();
+                db.Database.EnsureCreated();
+            }
+
+            return app;
         }
     }
 }

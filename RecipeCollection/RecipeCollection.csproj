@@ -72,7 +72,6 @@
 
 	<ItemGroup>
 	  <Folder Include="Helpers\Converters\" />
-	  <Folder Include="Services\" />
 	</ItemGroup>
 
 	<ItemGroup>

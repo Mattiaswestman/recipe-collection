@@ -1,6 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.EntityFrameworkCore;
+using RecipeCollection.Models;
+using RecipeCollection.Services;
 using RecipeCollection.Views;
 
 namespace RecipeCollection.ViewModels
@@ -10,13 +13,15 @@ namespace RecipeCollection.ViewModels
         [ObservableProperty]
         private ObservableCollection<string> categories;
         [ObservableProperty]
-        private string categoryToAdd;
+        private string currentCategory;
 
-        public MainPageViewModel() 
+        private RecipeCollectionDbContext database;
+
+        public MainPageViewModel(RecipeCollectionDbContext database) 
         {
+            this.database = database;
             Categories = new ObservableCollection<string>();
-            Categories.Add("Middag");
-            Categories.Add("Desert");
+            UpdateCategoriesAsync();
         }
 
         [RelayCommand]
@@ -26,9 +31,37 @@ namespace RecipeCollection.ViewModels
         }
 
         [RelayCommand]
-        private void AddNewCategory()
+        private async Task AddCategoryAsync()
         {
-            Categories.Add(CategoryToAdd);
+            var newCategory = new Category();
+            newCategory.Id = Random.Shared.Next(10000, 99999);
+            newCategory.Title = CurrentCategory;
+
+            database.Categories.Add(newCategory);
+            await database.SaveChangesAsync();
+            await UpdateCategoriesAsync();
+        }
+
+        [RelayCommand]
+        private async Task RemoveCategoryAsync()
+        {
+            var category = await database.Categories.FirstOrDefaultAsync(c => c.Title == CurrentCategory);
+            if (category != null)
+            {
+                database.Categories.Remove(category);
+                await database.SaveChangesAsync();
+                await UpdateCategoriesAsync();
+            }
+        }
+
+        private async Task UpdateCategoriesAsync()
+        {
+            Categories.Clear();
+            var categories = await database.Categories.ToListAsync();
+            foreach (var category in categories)
+            {
+                Categories.Add(category.Title);
+            }
         }
     }
 }

@@ -42,21 +42,30 @@
 		<Grid Grid.Row="2"
 			  ColumnSpacing="20">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="0.75*" />
-				<ColumnDefinition Width="0.25*" />
+				<ColumnDefinition Width="0.7*" />
+				<ColumnDefinition Width="0.15*" />
+				<ColumnDefinition Width="0.15*" />
 			</Grid.ColumnDefinitions>
 
 			<Entry Grid.Column="0"
 				   Placeholder="Enter Category..."
 				   PlaceholderColor="{StaticResource Gray600}"
-				   Text="{Binding CategoryToAdd}"
+				   Text="{Binding CurrentCategory}"
 				   FontSize="18"
 				   TextColor="{StaticResource Gray600}" />
 
 			<Button Grid.Column="1"
-					Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=AddNewCategoryCommand}"
+					Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=AddCategoryCommand}"
 					BackgroundColor="{StaticResource Orange}"
 					Text="Add"
+					FontSize="18"
+					FontAttributes="Bold"
+					TextColor="{StaticResource EggWhite}" />
+
+			<Button Grid.Column="2"
+					Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainPageViewModel}}, Path=RemoveCategoryCommand}"
+					BackgroundColor="{StaticResource Orange}"
+					Text="Remove"
 					FontSize="18"
 					FontAttributes="Bold"
 					TextColor="{StaticResource EggWhite}" />

@@ -57,7 +57,10 @@ namespace RecipeCollection.ViewModels
         private async Task UpdateCategoriesAsync()
         {
             Categories.Clear();
-            var categories = await database.Categories.ToListAsync();
+            var categories = await database.Categories
+                .OrderBy(c => c.Title.Substring(0, 1))
+                .ToListAsync();
+
             foreach (var category in categories)
             {
                 Categories.Add(category.Title);

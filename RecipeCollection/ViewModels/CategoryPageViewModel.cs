@@ -35,9 +35,15 @@ namespace RecipeCollection.ViewModels
         }
 
         [RelayCommand]
-        private void AddNewRecipe()
+        private void AddRecipe()
         {
             Recipes.Add(RecipeToAdd);
+        }
+
+        [RelayCommand]
+        private void RemoveRecipe()
+        {
+            Recipes.Remove(RecipeToAdd);
         }
     }
 }

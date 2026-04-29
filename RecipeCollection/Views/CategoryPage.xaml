@@ -60,8 +60,9 @@
 		<Grid Grid.Row="2"
 			  ColumnSpacing="20">
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="0.75*" />
-				<ColumnDefinition Width="0.25*" />
+				<ColumnDefinition Width="0.7*" />
+				<ColumnDefinition Width="0.15*" />
+				<ColumnDefinition Width="0.15*" />
 			</Grid.ColumnDefinitions>
 
 			<Entry Grid.Column="0"
@@ -72,9 +73,17 @@
 				   TextColor="{StaticResource Gray600}" />
 
 			<Button Grid.Column="1"
-					Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CategoryPageViewModel}}, Path=AddNewRecipeCommand}"
+					Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CategoryPageViewModel}}, Path=AddRecipeCommand}"
 					BackgroundColor="{StaticResource Orange}"
 					Text="Add"
+					FontSize="18"
+					FontAttributes="Bold"
+					TextColor="{StaticResource EggWhite}" />
+
+			<Button Grid.Column="2"
+					Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:CategoryPageViewModel}}, Path=RemoveRecipeCommand}"
+					BackgroundColor="{StaticResource Orange}"
+					Text="Remove"
 					FontSize="18"
 					FontAttributes="Bold"
 					TextColor="{StaticResource EggWhite}" />
